@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 import uvicorn
@@ -7,6 +8,14 @@ import csv
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # 🧱 Modelo del JSON
 class Incidencia(BaseModel):
     id: Optional[int] = None
@@ -14,7 +23,7 @@ class Incidencia(BaseModel):
     clase: str
     tipo: int
     incidencia: str
-    prioridad: str
+    prioridad: int
     estado: Optional[int] = 0
 
 
@@ -54,7 +63,7 @@ def load_csv_to_memory():
                     "clase": row["clase"],
                     "tipo": int(row["tipo"]),
                     "incidencia": row["incidencia"],
-                    "prioridad": row["prioridad"],
+                    "prioridad": int(row["prioridad"]),
                     "estado": int(row["estado"])
                 }
                 next_id = max(next_id, id_ + 1)

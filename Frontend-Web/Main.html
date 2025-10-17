@@ -26,20 +26,20 @@
       <form>
 
         <label for="usuario">Usuario</label>
-        <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario de los maristas">
+        <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario de los maristas" required>
 
         <label for="clase">Clase</label>
-        <input type="text" id="clase" name="clase" placeholder="Ej. 3ºA o Laboratorio 2">
+        <input type="text" id="clase" name="clase" placeholder="Ej. 3ºA o Laboratorio 2" required>
 
         <label for="clase">Tipo de incidencia</label>
-        <select id="tipo" name="tipo">
+        <select id="tipo" name="tipo"required>
           <option value="" disabled selected>Selecciona una opción</option>
           <option value="0">Informatica</option>
           <option value="1">Mantenimiento</option>
         </select>
 
         <label for="incidencia">Incidencia</label>
-        <textarea id="incidencia" name="incidencia" rows="4" placeholder="Describe la incidencia..."></textarea>
+        <textarea id="incidencia" name="incidencia" rows="4" placeholder="Describe la incidencia..." required></textarea>
 
         <div class="prioridad-row">
           <label for="prioridad">Prioridad:</label>
