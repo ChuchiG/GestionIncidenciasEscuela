@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incidencias Técnicas</title>
+  <link rel="stylesheet" href="style/main.css">
+  <script src="js/function.js" defer></script>
+</head>
+<body>
+  <div class="container">
+
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li class="active">Abrir incidencia</li>
+          <li>Incidencias cerradas</li>
+          <li>Incidencias abiertas</li>
+          <li>Incidencias en curso</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <h1>Incidencias técnicas</h1>
+      <form>
+
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario de los maristas">
+
+        <label for="clase">Clase</label>
+        <input type="text" id="clase" name="clase" placeholder="Ej. 3ºA o Laboratorio 2">
+
+        <label for="clase">Tipo de incidencia</label>
+        <select id="tipo" name="tipo">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="0">Informatica</option>
+          <option value="1">Mantenimiento</option>
+        </select>
+
+        <label for="incidencia">Incidencia</label>
+        <textarea id="incidencia" name="incidencia" rows="4" placeholder="Describe la incidencia..."></textarea>
+
+        <div class="prioridad-row">
+          <label for="prioridad">Prioridad:</label>
+
+          <fieldset class="rating" aria-label="Prioridad de la incidencia">
+            <input type="radio" id="star5" name="prioridad" value="4">
+            <label for="star5" title="Muy alta">★</label>
+
+            <input type="radio" id="star4" name="prioridad" value="3">
+            <label for="star4" title="Alta">★</label>
+
+            <input type="radio" id="star3" name="prioridad" value="2">
+            <label for="star3" title="Normal">★</label>
+
+            <input type="radio" id="star2" name="prioridad" value="1" checked>
+            <label for="star2" title="Baja">★</label>
+
+            <input type="radio" id="star1" name="prioridad" value="0">
+            <label for="star1" title="Muy baja">★</label>
+          </fieldset>
+
+          <div class="prioridad-valor">Valor: <span id="prioridad-valor">Normal</span></div>
+        </div>
+   
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
