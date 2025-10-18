@@ -1,0 +1,123 @@
+# =========================================
+# ARCHIVOS DEL SISTEMA
+# =========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# =========================================
+# ARCHIVOS DE ENTORNO / CONFIGURACIÓN
+# =========================================
+.env
+*.env
+.env.*
+*.ini
+*.cfg
+*.conf
+*.local
+*.log
+
+# =========================================
+# PYTHON
+# =========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Archivos de paquetes y dependencias
+*.egg
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+.eggs/
+
+# Compilaciones y cachés
+*.manifest
+*.spec
+
+# Cobertura de tests
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# =========================================
+# JAVASCRIPT / NODE
+# =========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+dist/
+build/
+
+# =========================================
+# HTML / CSS / FRONTEND
+# =========================================
+# Archivos generados automáticamente (ej: compilación de SCSS o bundling)
+*.map
+*.min.css
+*.min.js
+
+# =========================================
+# EDITORES / IDEs
+# =========================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# =========================================
+# DEPLOY / CONTENEDORES
+# =========================================
+# Docker
+Dockerfile
+docker-compose.yml
+*.pid
+
+# =========================================
+# BASES DE DATOS / MIGRACIONES
+# =========================================
+*.sqlite3
+*.db
+*.sql
+migrations/
+__migrations__/
+
+# =========================================
+# OTROS
+# =========================================
+*.bak
+*.tmp
+*.swp
+*.zip
+*.tar
+*.gz
+*.tgz
+*.rar
+*.7z

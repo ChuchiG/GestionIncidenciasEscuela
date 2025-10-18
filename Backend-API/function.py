@@ -16,7 +16,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 🧱 Modelo del JSON
 class Incidencia(BaseModel):
     id: Optional[int] = None
     usuario: str
@@ -26,12 +25,8 @@ class Incidencia(BaseModel):
     prioridad: int
     estado: Optional[int] = 0
 
-
-# 📂 Ruta del archivo CSV
 CSV_FILE = "resources//incidencias.csv"
 
-
-# 🧠 Asegura que el CSV exista y tenga encabezados
 def ensure_csv_exists():
     folder = os.path.dirname(CSV_FILE)
     if folder and not os.path.exists(folder):
@@ -46,8 +41,6 @@ def ensure_csv_exists():
 
     return file_exists
 
-
-# 🧩 Carga los datos existentes del CSV en memoria
 def load_csv_to_memory():
     ensure_csv_exists()
     data = {}
@@ -72,19 +65,14 @@ def load_csv_to_memory():
 
     return data, next_id
 
-
-# 🗂️ Cargar base de datos al iniciar la app
 _db, _next_id = load_csv_to_memory()
 
-
-# ✅ NUEVO ENDPOINT: obtener todas las incidencias
 @app.get("/incidencias")
 def get_all_incidencias():
     ensure_csv_exists()
     if not _db:
         raise HTTPException(status_code=404, detail="No hay incidencias registradas")
     return [{"id": id_, **data} for id_, data in _db.items()]
-
 
 @app.get("/incidencias/{incidencia_id}")
 def get_incidencia(incidencia_id: int):
@@ -94,7 +82,6 @@ def get_incidencia(incidencia_id: int):
     if not incidencia:
         raise HTTPException(status_code=404, detail="Incidencia no encontrada")
     return {"id": incidencia_id, **incidencia}
-
 
 @app.post("/incidencias", status_code=201)
 def create_incidencia(incidencia: Incidencia):
@@ -120,7 +107,6 @@ def create_incidencia(incidencia: Incidencia):
     created = {"id": _next_id, **_db[_next_id]}
     _next_id += 1
     return created
-
 
 @app.put("/incidencias/{incidencia_id}")
 def update_incidencia(incidencia_id: int, incidencia: Incidencia):
@@ -148,7 +134,6 @@ def update_incidencia(incidencia_id: int, incidencia: Incidencia):
             ])
 
     return {"id": incidencia_id, **_db[incidencia_id]}
-
 
 if __name__ == "__main__":
     uvicorn.run("function:app", host="127.0.0.1", port=8000, reload=True)
