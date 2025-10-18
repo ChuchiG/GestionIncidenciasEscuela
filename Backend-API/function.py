@@ -83,6 +83,24 @@ def get_incidencia(incidencia_id: int):
         raise HTTPException(status_code=404, detail="Incidencia no encontrada")
     return {"id": incidencia_id, **incidencia}
 
+@app.get("/incidencias/estado/{estado}")
+def get_incidencias_por_estado(estado: int):
+    ensure_csv_exists()
+
+    incidencias_filtradas = [
+        {"id": id_, **data}
+        for id_, data in _db.items()
+        if data.get("estado") == estado
+    ]
+
+    if not incidencias_filtradas:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No se encontraron incidencias con estado {estado}"
+        )
+
+    return incidencias_filtradas
+
 @app.post("/incidencias", status_code=201)
 def create_incidencia(incidencia: Incidencia):
     ensure_csv_exists()
