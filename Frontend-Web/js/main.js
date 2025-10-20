@@ -60,10 +60,28 @@ async function addIncidencia(incidencia) {
 
     const data = await response.json();
     console.log("✅ Incidencia guardada correctamente:", data);
-    alert("✅ Incidencia guardada con éxito.");
+
+    mostrarPopup(data);
 
   } catch (error) {
     console.error("❌ Error al guardar la incidencia:", error.message);
     alert("No se pudo guardar la incidencia. Intenta nuevamente.");
   }
+}
+
+function mostrarPopup(data) {
+  const popup = document.getElementById("popup");
+  const info = document.getElementById("popup-info");
+
+  info.textContent = JSON.stringify(data, null, 2);
+  popup.style.display = "flex";
+
+  setTimeout(() => {
+    cerrarPopup();
+  }, 8000);
+}
+
+function cerrarPopup() {
+  const popup = document.getElementById("popup");
+  popup.style.display = "none";
 }
