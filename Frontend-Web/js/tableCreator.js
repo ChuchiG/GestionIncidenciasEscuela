@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       case "Incidencias en curso":
         modoActual = 1;
         console.log("Se abre incidencias en curso");
-        break; 
+        break;
 
       case "Incidencias cerradas":
         modoActual = 2;
         console.log("Se abre incidencias cerradas");
         break;
-  
+
       default:
         modoActual = "desconocido";
         console.warn("Título no reconocido:", titulo);
@@ -91,7 +91,6 @@ function mostrarTablaIncidencias(incidencias) {
       <th>Clase</th>
       <th>Tipo</th>
       <th>Incidencia</th>
-      <th>Prioridad</th>
     </tr>
   `;
   tabla.appendChild(thead);
@@ -101,14 +100,12 @@ function mostrarTablaIncidencias(incidencias) {
   incidencias.forEach(inc => {
     const fila = document.createElement("tr");
     const tipo = inc.tipo === 0 ? "Informática" : inc.tipo === 1 ? "Mantenimiento" : "desconocido;";
-    const prioridad = inc.prioridad === 0 ? "Baja" : inc.prioridad === 1 ? "Normal" : inc.prioridad === 2 ? "Alta" : inc.prioridad === 3 ? "Urgente" : inc.prioridad === 4 ? "Evento canonico" : "desconocido"; 
 
     fila.innerHTML = `
       <td>${inc.usuario}</td>
       <td>${inc.clase}</td>
       <td>${tipo}</td>
       <td>${inc.incidencia}</td>
-      <td>${prioridad}</td>
     `;
 
     tbody.appendChild(fila);

@@ -22,7 +22,6 @@ class Incidencia(BaseModel):
     clase: str
     tipo: int
     incidencia: str
-    prioridad: int
     estado: Optional[int] = 0
 
 CSV_FILE = "resources//incidencias.csv"
@@ -56,7 +55,6 @@ def load_csv_to_memory():
                     "clase": row["clase"],
                     "tipo": int(row["tipo"]),
                     "incidencia": row["incidencia"],
-                    "prioridad": int(row["prioridad"]),
                     "estado": int(row["estado"])
                 }
                 next_id = max(next_id, id_ + 1)
@@ -118,7 +116,6 @@ def create_incidencia(incidencia: Incidencia):
             incidencia.clase,
             incidencia.tipo,
             incidencia.incidencia,
-            incidencia.prioridad,
             incidencia.estado
         ])
 
@@ -147,7 +144,6 @@ def update_incidencia(incidencia_id: int, incidencia: Incidencia):
                 data["clase"],
                 data["tipo"],
                 data["incidencia"],
-                data["prioridad"],
                 data["estado"]
             ])
 

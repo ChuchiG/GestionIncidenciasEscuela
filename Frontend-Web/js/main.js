@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('.rating input').forEach(input => {
-        input.addEventListener('change', () => {
-        document.getElementById('prioridad-valor').textContent = actualizarValuePrioridad(input.value);
-        });
-    });
+    
   
     const form = document.querySelector("form");
     form.addEventListener("submit", async (event) => {
@@ -15,8 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             usuario: formData.get("usuario"),       
             clase: formData.get("clase"),           
             tipo: parseInt(formData.get("tipo")),               
-            incidencia: formData.get("incidencia"), 
-            prioridad: parseInt(formData.get("prioridad")),     
+            incidencia: formData.get("incidencia"),     
             estado: 0               
         };
         await addIncidencia(incidencia);
@@ -24,24 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('prioridad-valor').textContent = "";
   });
 });
-
-function actualizarValuePrioridad(value) {
-    const numericValue = parseInt(value);
-    switch (numericValue) {
-        case 0:
-            return "Baja";
-        case 1:
-            return "Normal";
-        case 2:
-            return "Alta";
-        case 3:
-            return "Urgente";
-        case 4:
-            return "Evento canonico";
-        default:
-            return "";
-    }
-}
 
 async function addIncidencia(incidencia) {
   const API_URL = "http://127.0.0.1:8000/incidencias";
